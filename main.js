@@ -1,39 +1,21 @@
-"use strict";
-console.log("Bienvenu à TS Learning");
-// Variables et types :
-let count = 3;
-let prenom = "Adrien";
-let admin = true;
-let serveurs = [
-    "srv-web",
-    "srv-db",
-    "srv-proxy"
+var servers = [
+    {
+        hostname: "srv_web",
+        ip: "192.168.1.2",
+        os: "Ubuntu",
+        cpu: 60
+    },
+    {
+        hostname: "srv_bdd",
+        ip: "192.168.1.3",
+        os: "Rocky",
+        cpu: 90
+    }
 ];
-let ports = [80, 443, 22];
-console.log(serveurs[0]);
-//Objets :
-let user = {
-    name: "Adrien",
-    age: 23
-};
-console.log(user);
-console.log("Prénom du user : ", user.name);
-//Fonctions :
-function addition(a, b) {
-    return a + b;
+function countLinuxServers(servers) {
+    return servers.filter(function (s) { return s.os === "Ubuntu"; }).length;
 }
-console.log(addition(3, 5));
-//parametre optionnel(fonction):
-function saluer(name, firstname) {
-    console.log("Hello", name, firstname);
+function getOverloadServers(servers) {
+    return servers.filter(function (s) { return s.cpu >= 80; });
 }
-saluer("RICQUE");
-saluer("RICQUE", "Adrien");
-// Utilisation :
-const adrien = {
-    name: "Adrien",
-    age: 23
-};
-let niveaulog = "INFO";
-console.log(niveaulog);
-// conditions
+console.log(getOverloadServers(servers));
